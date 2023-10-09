@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<title>User registration form</title>
+ <style>
+    
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.container1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #87f16c;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: darkblue;
+}
+.div1{
+ display: flex;
+ flex-direction: row;
+}
+input{
+    margin-top: 15px;
+    margin-left: 10px;
+    width: 250px;
+    height: 40px;
+    padding-left: 10px;
+}
+label{
+    margin-top: 14px;
+   font-size: 21px;
+    height: 40px;
+    font-family: roboto;
+}
+.reg_btn{
+    display: flex;
+    justify-content: center;
+}
+.btn{
+   
+    font-size: 21px;
+    height: 40px;
+    font-family: roboto;
+    font-weight: bold;
+    border: 1px solid;
+}
+ </style>
+    
+  </head>
+  <body >
+   
+    <div class="container">
+        <div class="container1">
+      <h1>User Registration </h1>
+      <form id="myform" action="/insert" method="post" >
+        <div class="div1">
+            <div class="">
+                <label for="user_name">user_name:</label> <br>
+                <label for="user_email">user_email:</label> <br>
+                <label for="user_password">user_password:</label> <br>
+                <label for="user_image">user_image </label> <br>
+                <label for="total_orders">total_orders:</label>
+            </div>
+            <div >
+                <input class="p-5" type="text" id="user_name" placeholder="enteruser name" name="user_name" required> <br>
+                <input type="email" id="user_email" placeholder="enter user email" name="user_email" required> <br>
+                <input type="password" id="user_password" placeholder="enter password" name="user_password" required> <br>
+                <input type="text" id="user_image" placeholder="image url" name="user_image"> <br>
+                <input type="number" id="total_orders" placeholder="enter total orders" name="total_orders"> <br>
+            </div>
+        </div>
+        
+       
+        <div class="reg_btn">
+            <button class="btn" type="submit"  onclick="showAlert()">Register </button>
+        </div>
+       
+    </div>
+    </form>
+
+    </div>
+    <script>
+      // Function to show an alert when the form is submitted successfully.
+
+    document.getElementById('myForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log('Form submitted'); // Add this line to check if the event listener is executed
+   
+});
+    </script>
+
+
+    
+  </body>
+</html>
