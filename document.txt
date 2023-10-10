@@ -3,7 +3,6 @@ my running port number [3005]
 
 /login  [example localhost:3005/login] we get jwt token
 
-
 {
    "user_email":"elon@gmail.com",
    "user_password":"1231231231"
