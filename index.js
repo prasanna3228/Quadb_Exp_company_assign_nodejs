@@ -151,22 +151,7 @@ app.set("view engine", "ejs"); // Set EJS as the view engine
 app.set("views", path.join(__dirname, "views")); // Specify the views directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-//get all user details without jwt
-app.get("/userdetails", async (request, response) => {
-  try {
-    const getUsersQuery = `
-      SELECT
-        *
-      FROM
-        users;`;
 
-    const users = await db.all(getUsersQuery);
-    response.render("table", { users }); // Render the "table.ejs" template and pass the users data
-  } catch (error) {
-    console.error(error);
-    response.status(500).send("Internal Server Error");
-  }
-});
 
 app.get("/image/:user_id/", async (request, response) => {
   try {
@@ -208,4 +193,44 @@ app.delete("/delete/:user_id/", async (request, response) => {
     user_id = ${user_id};`;
   await db.run(deletePlayerQuery);
   response.send("user Removed");
+});
+
+
+
+//get all user details without jwt
+app.get("/userdetails", async (request, response) => {
+  try {
+    const getUsersQuery = `
+      SELECT
+        *
+      FROM
+        users;`;
+
+    const users = await db.all(getUsersQuery);
+    response.render("table", { users }); // Render the "table.ejs" template and pass the users data
+  } catch (error) {
+    console.error(error);
+    response.status(500).send("Internal Server Error");
+  }
+});
+
+//get single user details
+app.get("/details/:user_id", async (request, response) => {
+  const {user_id}=request.params
+
+    const getUsersQuery = `
+      SELECT
+        *
+      FROM
+        users
+        where
+        user_id=${user_id};`;
+
+    const users = await db.all(getUsersQuery);
+    response.send(users)
+    // response.render("table", { users }); // Render the "table.ejs" template and pass the users data
+  // } catch (error) {
+    // console.error(error);
+    // response.status(500).send("Internal Server Error");
+  
 });

@@ -1,4 +1,13 @@
-endpoint
+.............endpoints..............
+my running port number [3005]
+
+/login  [example localhost:3005/login] we get jwt token
+
+
+{
+   "user_email":"elon@gmail.com",
+   "user_password":"1231231231"
+}
 
 /details  .... you can get all user data in json format [use postman]
 
@@ -18,3 +27,5 @@ endpoint
 /delete/:used_id [example localhost:3005/delete/1]
 
 /usedetails  .... you can get all user details in table format [run your browser like localhost:3005/userdetails]
+
+/details/:user_id [example localhost:3005/details/1] use can get single user
