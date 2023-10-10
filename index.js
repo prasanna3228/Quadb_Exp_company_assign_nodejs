@@ -13,7 +13,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 
-
 let db = null;
 
 const initializeDBAndServer = async () => {
@@ -36,7 +35,7 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-// Get Books API
+// Get Books API.... check postman
 app.get("/details/", async (request, response) => {
   let jwtToken;
   const authHeader = request.headers["authorization"];
@@ -62,6 +61,30 @@ app.get("/details/", async (request, response) => {
     });
   }
 });
+
+
+// Update user details route
+app.put("/update/:user_id", async (req, res) => {
+    const { user_name, user_email, user_password, user_image, total_orders } = req.body;
+    const { user_id } = req.params;
+    // Hash the new password before updating it
+    const hashedPassword = await bcrypt.hash(user_password, 10);
+    const updateUserQuery = `
+      UPDATE users
+      SET
+        user_name = ?,
+        user_email = ?,
+        user_password = ?,
+        user_image = ?,
+        total_orders = ?
+      WHERE user_id = ?
+    `;
+    db.run(
+      updateUserQuery,
+      [user_name, user_email, hashedPassword, user_image, total_orders, user_id], );
+      res.send("user details update successfully")
+    })
+    
 
 // User Register API
 app.post("/insert/", async (req, res) => {
@@ -172,4 +195,17 @@ app.get("/image/:user_id/", async (request, response) => {
     console.error("Error fetching user image:", error);
     response.status(500).send("Internal Server Error");
   }
+});
+
+
+//delete single user
+app.delete("/delete/:user_id/", async (request, response) => {
+  const { user_id } = request.params;
+  const deletePlayerQuery = `
+  DELETE FROM
+    users
+  WHERE
+    user_id = ${user_id};`;
+  await db.run(deletePlayerQuery);
+  response.send("user Removed");
 });

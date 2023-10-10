@@ -1,0 +1,20 @@
+endpoint
+
+/details  .... you can get all user data in json format [use postman]
+
+/update/:used_id .... [use postmam like localhost:3005/update/1]
+{
+  "user_name":" Elon musk",
+  "user_email":"elon@gmail.com",
+  "user_password":"1231231231",
+  "user_image":"https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781982181284/elon-musk-9781982181284_lg.jpg",
+  "total_orders":100  
+}
+
+/image/:user_id .... [run your browser like localhost:3005/image/1]
+
+/insert  [you can insert data html from (or) postman]
+
+/delete/:used_id [example localhost:3005/delete/1]
+
+/usedetails  .... you can get all user details in table format [run your browser like localhost:3005/userdetails]
